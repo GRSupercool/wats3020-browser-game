@@ -300,21 +300,28 @@ if(!this.gameState[tile_x][tile_y]){
 // TODO: Add an event listener to the `document` object that will watch for the
 // "DOMContentLoaded" event signal. This listener should execute an anonymous
 // function to handle the "DOMContentLoaded" event.
+document.addEventListener('DomContentLoaded', function(event)=>{
+    
+}
 
   // TODO: Inside the "DOMContentLoaded" event handler, perform the following
   // steps:
-
   // TODO: Select the `#start-button` element from the DOM and save it as a
   // variable called `startButton`.
+  let startButton=Document.querySelector('#start-button');
 
   // TODO: Create an event listener on the `startButton` element that listens for
   // a "click" event and executes an anonymous function to start the game.
-
-      // TODO: Inside the `startButton` event listener, instantiate a new
+  startButton.addEventListener('click',(event)=>{
+      
+    // TODO: Inside the `startButton` event listener, instantiate a new
       // instance of the `TicTacToe` class and save it as a variable called
       // `game`.
+      game= new TicTacToe();
 
       // TODO: Call the `start()` method of the `game` object you just created.
+      game.start();
+   });   
 
   // NOTE: End of the `startButton` event listener here.
 
