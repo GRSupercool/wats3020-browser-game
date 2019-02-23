@@ -325,7 +325,7 @@ document.addEventListener('DomContentLoaded', function(event)=>{
 
   // NOTE: End of the `startButton` event listener here.
 
-// NOTE: End of the "DOMContentLoaded" event listener here.
+  // NOTE: End of the "DOMContentLoaded" event listener here.
 
 
 // TODO: Add an event listener on the `document` object that listens for the
