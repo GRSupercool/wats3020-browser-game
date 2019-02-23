@@ -107,11 +107,11 @@ class TicTacToe {
               // dispatch it.
 
               // TODO: Create a new event called `winEvent` that will dispatch the signal "win".
-                  
+                  let winEvent= new Event('win');
               }
 
               // TODO: Dispatch the winEvent using the `document.dispatchEvent()` method.
-
+                document.dispatchEvent(winEvent);
               return true; // Return a value to stop processing the additional move count check.
           }
       }
@@ -122,10 +122,13 @@ class TicTacToe {
           this.gameStatus = 'draw';
 
           // TODO: Create a new event called `drawEvent` that dispatches the signal "draw".
+          let drawEvent=newEvent('draw');
+          
           
 
           // TODO: Dispatch the `drawEvent` event.
-      }
+         document.dispatchEvent(drawEvent);
+     }
   }
 
   recordMove(event){
@@ -142,6 +145,12 @@ class TicTacToe {
       // TODO: Define a variable called `tile_y` that equals the `data-y` attribute on the `event.target`.
         let tile_y=event.target.dataset.y;
       // TODO: Claim this spot in the `this.gameState` array for the player.
+if(!this.gameState[tile_x][tile_y]){
+    this.gameState[title_x,tile_y]=this.currentPlayer.token;
+    event.target.setAttribute('class','tile played fas fa-${this.currentPlayer.token}');
+}else{
+    return false;
+}
 
       // TODO: Set the class on the `event.target` to show the player's token. The class
       // should be: `tile played fas fa-${this.currentPlayer.token}`.
@@ -156,12 +165,19 @@ class TicTacToe {
       // is equal to `this.player1` If so, set `this.currentPlayer` to
       // `this.player2`. If not, set `this.currentPlayer` equal to
       // `this.player1`. (You will use an if/else statement to do this.)
+      if(this.currentPlayer===this.player1){
+          this.currentPlayer=this.player2;
+    }else {
+        this.currentPlyer=this.player1;
+    }
+  }
 
 
       // TODO: Set the `class` attribute on `this.currentPlayerToken` to
       // reflect the current player's token. (Note: You will need to use the
       // proper Icon classes combined with the `this.currentPlayer.token`
       // value.)
+      this.currentPlayerToken.setAttribute('class','fas fa-${this.currentPlayer.token}');
   }
   setUpTileListeners(){
       // This method sets up event listeners for tiles. It is called when we
