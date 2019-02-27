@@ -168,7 +168,7 @@ if(!this.gameState[tile_x][tile_y]){
       if(this.currentPlayer===this.player1){
           this.currentPlayer=this.player2;
     }else {
-        this.currentPlyer=this.player1;
+        this.currentPlayer=this.player1;
     }
   }
 
@@ -199,15 +199,18 @@ if(!this.gameState[tile_x][tile_y]){
 
       // TODO: Change the `class` attribute on the `this.winScreen` property
       // to "show".
+      this.winScreen.setAttribute('class','show');
 
       // TODO: Change the `class` attribute on the `this.winnerToken` property
       // to show the proper winner's token.
+      this.winnerToken.setAttribute('class',`fas fa-${this.winner.token}`);
   }
   showDrawScreen(){
       // This method displays the end game screen for a Draw.
 
       // TODO: Set the `class` attribute on the `this.drawScreen` property
       // to "show".
+      this.drawScreen.setAttribute('class','show');
   }
   setUpBoard(){
       // TODO: Clear all content from the existing `this.gameboard` element.
@@ -220,8 +223,6 @@ if(!this.gameState[tile_x][tile_y]){
       // TODO: Create a `for` loop that will loop three times. The counter
       // variable in this loop should be called `i`.
       for(let i=0; i<3; i++){
-          
-      }
           // TODO: Create a new div element called `newRow
           let newRow= document.createElement('div');
 
@@ -243,7 +244,7 @@ if(!this.gameState[tile_x][tile_y]){
 
               // TODO: Set the `class` attribute on `newTile` to equal the
               // placeholder styles ("tile fas fa-question-sign").
-              newTile.setAttribute('class','title fas fa-question-sign');
+              newTile.setAttribute('class','tile fas fa-question-sign');
 
               // TODO: Set the `data-x` attribute on the `newTile` element
               // equal to `i`.
@@ -254,18 +255,18 @@ if(!this.gameState[tile_x][tile_y]){
               newTile.setAttribute('data-y','j');
 
               // TODO: Append `newTile` as a child to `newCol`.
-              newCol.appendChild('newTile');
+              newCol.appendChild(newTile);
 
               // TODO: Append `newCol` as a child to `newRow`.
-              newRow.appendChild('newcol');
+              newRow.appendChild(newCol);
 
           // NOTE: Your second `for` loop should end here.
-
+}
           // TODO: Append the `newRow` element to `this.gameboard` as a child element.
-             this.gameboard.appendChild('newRow');
+             this.gameboard.appendChild(newRow);
 
       // NOTE: Your first `for` loop should end here.
-
+}
       // TODO: Call `this.setUpTileListeners()` to add event listeners to the
       // `.tile` elements.
              this.setUpTileListeners();
@@ -275,10 +276,10 @@ if(!this.gameState[tile_x][tile_y]){
 
       // TODO: Hide the `this.startPrompt` element by setting the `class`
       // attribute to "hidden".
-      this.startPrompt.classAtttribute('hidden');
+      this.startPrompt.setAtttribute('class','hidden');
 
       // TODO: Remove the "hidden" class from the `this.movePrompt` element.
-
+this.movePrompt.setAttribute('class','');
       // TODO: Set `this.currentPlayer` equal to `this.player1`.
       
       // TODO: Set `this.currentPlayerToken` class equal to `fas fa-${this.currentPlayer.token}`
@@ -313,20 +314,23 @@ document.addEventListener('DomContentLoaded', function(event)=>{
   // TODO: Create an event listener on the `startButton` element that listens for
   // a "click" event and executes an anonymous function to start the game.
   startButton.addEventListener('click',(event)=>{
+      game=new TicTacToe();
+  })
+
       
     // TODO: Inside the `startButton` event listener, instantiate a new
       // instance of the `TicTacToe` class and save it as a variable called
       // `game`.
       game= new TicTacToe();
-
-      // TODO: Call the `start()` method of the `game` object you just created.
+ 
+// TODO: Call the `start()` method of the `game` object you just created.
       game.start();
-   });   
+   })  
 
   // NOTE: End of the `startButton` event listener here.
-
+}
   // NOTE: End of the "DOMContentLoaded" event listener here.
-
+}
 
 // TODO: Add an event listener on the `document` object that listens for the
 // "win" event signal.
