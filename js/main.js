@@ -1,11 +1,9 @@
 /* WATS 3020 Browser Game project */
 /* Build a tic tac toe game for two players. */
 
-// TODO: declare a global variable named 'game` - it will reference the instance of the current game
+
 let game;
-// TODO: Create a class called `Player`. The `constructr()` should look for a
-// parameter called `token` and should set `this.token` as a property of
-// the class.
+
 class Player{
     contructor(token){
         this.token=token;
@@ -15,51 +13,32 @@ class Player{
 // Tic Tac Toe Game Class
 class TicTacToe {
   constructor(){
-      // TODO: Set up `this.player1` and `this.player2` properties.
-      // These properties should be new Player class instances.
-      // You may set the "token" to anything that corresponds to a Icon
-      // icon name ('heart', 'star', 'remove-sign', 'unchecked', 'bell',
-      // 'certificathte', etc.)
+     
       this.player1=new Player('times');
       this.player2=new Player('circle');
       
-
-
-      // TODO: Initialize several  properties that will be used to track game
-      // progress.
-
-      // TODO: Set `this.currentPlayer` equal to `null
       this.currentPlayer=null;
 
-      // TODO: Set `this.gameStatus` equal to `null`
       this.gameStatus=null;
 
-      // TODO: Set `this.winner` equal to `null`
       this.winner=null;
 
-      // TODO: Set `this.moveCount` equal to `0`
       this.moveCount=0;
 
-      // TODO: Set up DOM elements used in game as Class properties
-
-      // TODO: Set `this.startPrompt` equal to the `#start-prompt` element
       this.startPrompt=document.querySelector('#start-prompt');
 
-      // TODO: Set `this.movePrompt` equal to the `#move-prompt` element
      this.movePrompt=document.querySelector('#move-prompt');
-    
-      // TODO: Set `this.currentPlayerToken` equal to the `#player-token` element
+     
      this.currentPlayerToken=document.querySelector('#player-token');
-      // TODO: Set `this.gameboard` equal to the `#gameboard` element
+      
       this.gameboard=document.querySelector('#gameboard');
      
-      // TODO: Set `this.winScreen` equal to the `#win-screen` element
       this.winScreen=document.querySelector('#win-screen');
 
-      // TODO: Set `this.winnerToken` equal to the `#winner-token` element
+      
       this.winnerToken=document.querySelector('#winner-token');
 
-      // TODO: Set `this.drawScreen` equal to the `#draw-screen` element
+      
       this.drawScreen=document.querySelector('#draw-screen');
 
       // Initialize an Array representing the starting state of the game board.
@@ -109,11 +88,11 @@ class TicTacToe {
               // If we've gotten here, then we need to createa  `win` event and
               // dispatch it.
 
-              // TODO: Create a new event called `winEvent` that will dispatch the signal "win".
+             
                   let winEvent= new Event('win');
               }
 
-              // TODO: Dispatch the winEvent using the `document.dispatchEvent()` method.
+    
                 document.dispatchEvent(winEvent);
               return true; // Return a value to stop processing the additional move count check.
           }
@@ -126,12 +105,9 @@ class TicTacToe {
           console.log(`This game is a draw at ${this.moveCount} moves.`);
           this.gameStatus = 'draw';
 
-          // TODO: Create a new event called `drawEvent` that dispatches the signal "draw".
+          
           let drawEvent=new Event('draw');
           
-          
-
-          // TODO: Dispatch the `drawEvent` event.
          document.dispatchEvent(drawEvent);
      }
   }
@@ -144,14 +120,13 @@ class TicTacToe {
       // 2. Claim that tile in the `this.gameState` array
       // 3. Set the class attribute of the tile to reflect which player has claimed it
 
-      // TODO: Define a variable called `tile_x` that equals the `data-x` attribute on the `event.target`.
+      
       let tile_x=event.target.dataset.x;
 
-      // TODO: Define a variable called `tile_y` that equals the `data-y` attribute on the `event.target`.
+     
         let tile_y=event.target.dataset.y;
    } 
 
-      // TODO: Claim this spot in the `this.gameState` array for the player.
 if(!this.gameState[tile_x][tile_y]){
     this.gameState[tile_x][tile_y]=this.currentPlayer.token;
     event.target.setAttribute('class',`tile played fas fa-${this.currentPlayer.token}`);
@@ -160,8 +135,7 @@ if(!this.gameState[tile_x][tile_y]){
 }
 }
 
-      // TODO: Set the class on the `event.target` to show the player's token. The class
-      // should be: `tile played fas fa-${this.currentPlayer.token}`.
+     
    event.target.setAttribute('class','tile played' `fas fa-${this.currentPlayer.token}`);
    else{
        return false;
@@ -186,23 +160,11 @@ if(!this.gameState[tile_x][tile_y]){
   }
 
 
-      // TODO: Set the `class` attribute on `this.currentPlayerToken` to
-      // reflect the current player's token. (Note: You will need to use the
-      // proper Icon classes combined with the `this.currentPlayer.token`
-      // value.)
-      this.currentPlayerToken.setAttribute('class',`fas fa-${this.currentPlayer.token}`);
-  }
   setUpTileListeners(){
-      // This method sets up event listeners for tiles. It is called when we
-      // start a new game. It must find all the tiles and apply event listeners
-      // to them.
-
-      // TODO: Select all of the `.tile` elements into a variable called
-      // `tileElements`.
+      
       let titleElements=document.querySelectorAll('.tile');
 
-      // TODO: Use a loop to add a "click" event listener to each tile that
-      // will call the `handleMove` function whenever a tile is clicked.
+      
       for(const tile of tileElements){
           title.addEventListener('click','handleMove');
       }
@@ -210,23 +172,18 @@ if(!this.gameState[tile_x][tile_y]){
   showWinScreen(){
       // This method displays the end game screen for a Win.
 
-      // TODO: Change the `class` attribute on the `this.winScreen` property
-      // to "show".
       this.winScreen.setAttribute('class','show');
 
-      // TODO: Change the `class` attribute on the `this.winnerToken` property
-      // to show the proper winner's token.
       this.winnerToken.setAttribute('class',`fas fa-${this.currentPlayer.token}`);
   }
   showDrawScreen(){
       // This method displays the end game screen for a Draw.
 
-      // TODO: Set the `class` attribute on the `this.drawScreen` property
-      // to "show".
+
       this.drawScreen.setAttribute('class','show');
   }
   setUpBoard(){
-      // TODO: Clear all content from the existing `this.gameboard` element.
+      
       this.gameboard.innerHTML='';
 
       // We must draw the game board by using a loop to create rows with
